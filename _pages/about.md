@@ -1,11 +1,13 @@
 ---
 layout: page
-title: About Me
+title: About Us
 permalink: /about/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+Ekam Kaire (DevOps Engineer):
 
+Shreyas Sarurkar (Scrum Master):
 
+Ishi Singh (Frontend Developer):
 
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+Lily Wu (Backend Developer):
