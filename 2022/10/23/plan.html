@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      2 min read
     
 </span></p>
 
@@ -93,21 +93,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#scrum-master">Scrum Master</a></li>
 <li class="toc-entry toc-h2"><a href="#devops-engineer">DevOps Engineer</a></li>
 <li class="toc-entry toc-h2"><a href="#backend-developer">Backend Developer</a></li>
-<li class="toc-entry toc-h1"><a href="#initialize-jokes">Initialize jokes</a></li>
-<li class="toc-entry toc-h1"><a href="#return-all-jokes-from-jokes_data">Return all jokes from jokes_data</a></li>
-<li class="toc-entry toc-h1"><a href="#joke-getter">Joke getter</a></li>
-<li class="toc-entry toc-h1"><a href="#return-random-joke-from-jokes_data">Return random joke from jokes_data</a></li>
-<li class="toc-entry toc-h1"><a href="#liked-joke">Liked joke</a></li>
-<li class="toc-entry toc-h1"><a href="#jeered-joke">Jeered joke</a></li>
-<li class="toc-entry toc-h1"><a href="#add-to-haha-for-requested-id">Add to haha for requested id</a></li>
-<li class="toc-entry toc-h1"><a href="#add-to-boohoo-for-requested-id">Add to boohoo for requested id</a></li>
-<li class="toc-entry toc-h1"><a href="#pretty-print-joke">Pretty Print joke</a></li>
-<li class="toc-entry toc-h1"><a href="#number-of-jokes">Number of jokes</a></li>
-<li class="toc-entry toc-h1"><a href="#test-joke-model">Test Joke Model</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#frontend-developer">Frontend Developer</a></li>
-</ul>
-</li>
 </ul><h2 id="planning">
 <a class="anchor" href="#planning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Planning</h2>
 
@@ -146,115 +132,7 @@ window.onload = wrap_img;
 
 <p>We wanted our project to be more interactive so we decided to makes a feedback page with help from the Jokes API. A quick overview on the backend code, we have a list which contains our feedback questions the feedback data contains dictionaries with key value pairs as shown in feedback data.append. This is also shown on the Team Berries Fastpage and on the flask portfoilo.</p>
 
-<p>’’’
-import random</p>
-
-<p>feedback_data = []
-feedback_list = [
-    “Was this website efficient?”,
-    “Is the site aesthetically pleasing?”,
-    “Were you able to find your word?”,
-    “Are we better than our competitors?”,
-    “If this project were to be available on the market, would you use it?”</p>
-
-<p>]</p>
-
-<h1 id="initialize-jokes">
-<a class="anchor" href="#initialize-jokes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialize jokes</h1>
-<p>def initFeedback():
-    # setup jokes into a dictionary with id, joke, haha, boohoo
-    item_id = 0
-    for item in feedback_list:
-        feedback_data.append({“id”: item_id, “feedback”: item, “yes”: 0, “no”: 0})
-        item_id += 1
-    # prime some haha responses
-    for i in range(10):
-        id = getRandomFeedback()[‘id’]
-        addFeedbackHaHa(id)
-    # prime some haha responses
-    for i in range(5):
-        id = getRandomFeedback()[‘id’]
-        addFeedbackBooHoo(id)</p>
-
-<h1 id="return-all-jokes-from-jokes_data">
-<a class="anchor" href="#return-all-jokes-from-jokes_data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Return all jokes from jokes_data</h1>
-<p>def getFeedbacks():
-    return(feedback_data)</p>
-
-<h1 id="joke-getter">
-<a class="anchor" href="#joke-getter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Joke getter</h1>
-<p>def getFeedback(id):
-    return(feedback_data[id])</p>
-
-<h1 id="return-random-joke-from-jokes_data">
-<a class="anchor" href="#return-random-joke-from-jokes_data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Return random joke from jokes_data</h1>
-<p>def getRandomFeedback():
-    return(random.choice(feedback_data))</p>
-
-<h1 id="liked-joke">
-<a class="anchor" href="#liked-joke" aria-hidden="true"><span class="octicon octicon-link"></span></a>Liked joke</h1>
-<p>def favoriteFeedback():
-    best = 0
-    bestID = -1
-    for feedback in getFeedbacks():
-        if feedback[‘yes’] &gt; best:
-            best = feedback[‘yes’]
-            bestID = feedback[‘id’]
-    return feedback_data[bestID]</p>
-
-<h1 id="jeered-joke">
-<a class="anchor" href="#jeered-joke" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jeered joke</h1>
-<p>def jeeredFeedback():
-    worst = 0
-    worstID = -1
-    for feedback in getFeedbacks():
-        if feedback[‘no’] &gt; worst:
-            worst = feedback[‘no’]
-            worstID = feedback[‘id’]
-    return feedback_data[worstID]</p>
-
-<h1 id="add-to-haha-for-requested-id">
-<a class="anchor" href="#add-to-haha-for-requested-id" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add to haha for requested id</h1>
-<p>def addFeedbackHaHa(id):
-    feedback_data[id][‘yes’] = feedback_data[id][‘yes’] + 1
-    return feedback_data[id][‘yes’]</p>
-
-<h1 id="add-to-boohoo-for-requested-id">
-<a class="anchor" href="#add-to-boohoo-for-requested-id" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add to boohoo for requested id</h1>
-<p>def addFeedbackBooHoo(id):
-    feedback_data[id][‘no’] = feedback_data[id][‘no’] + 1
-    return feedback_data[id][‘no’]</p>
-
-<h1 id="pretty-print-joke">
-<a class="anchor" href="#pretty-print-joke" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pretty Print joke</h1>
-<p>def printFeedback(joke):
-    print(joke[‘id’], joke[‘feedback’], “\n”, “yes:”, joke[‘yes’], “\n”, “no:”, joke[‘no’], “\n”)</p>
-
-<h1 id="number-of-jokes">
-<a class="anchor" href="#number-of-jokes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number of jokes</h1>
-<p>def countFeedback():
-    return len(feedback_data)</p>
-
-<h1 id="test-joke-model">
-<a class="anchor" href="#test-joke-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test Joke Model</h1>
-<p>if <strong>name</strong> == “<strong>main</strong>”: 
-    initFeedback()  # initialize jokes</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Most likes and most jeered
-best = favoriteFeedback()
-print("Most liked", best['yes'])
-printFeedback(best)
-worst = jeeredFeedback()
-print("Most jeered", worst['no'])
-printFeedback(worst)
-
-# Random joke
-print("Random joke")
-printFeedback(getRandomFeedback())
-
-# Count of Jokes
-print("Jokes Count: " + str(countFeedback())) '''
-</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/82348259/198409859-b4a37f0a-82e1-435d-bae4-9465496e8243.png" alt="image"></p>
 
 <h2 id="frontend-developer">
 <a class="anchor" href="#frontend-developer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Frontend Developer</h2>
