@@ -27,6 +27,32 @@
   
 
   
+      ,"page1": {
+          "title": "About Us",
+          "content": "Ekam Kaire (DevOps Engineer): the best team member obviously . Shreyas Sarurkar (Scrum Master): . Ishi Singh (Frontend Developer): . Lily Wu (Backend Developer): .",
+          "url": "https://random-ign.github.io/Team-Berries-Fastpages/about/",
+          "relUrl": "/about/",
+          "date": ""
+      }
+      
+  
+
+  
+
+  
+      ,"page3": {
+          "title": "Project Frontend",
+          "content": "Dictonary . Input your word and hit enter . &lt;/head&gt; &lt;table style=&quot;font-family:Georgia, Garamond, Serif;color:#000000;&quot; bordercolor=#FFF0AC WIDTH=&quot;100%&quot; HEIGHT=&quot;500&quot; border-width=&quot;1&quot;&gt; Word | . Definition | . &lt;/html&gt; Word of the Day: .",
+          "url": "https://random-ign.github.io/Team-Berries-Fastpages/frontend/",
+          "relUrl": "/frontend/",
+          "date": ""
+      }
+      
+  
+
+  
+  
+
   
 
   
@@ -42,7 +68,7 @@
   
 
   
-      ,"page6": {
+      ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://random-ign.github.io/Team-Berries-Fastpages/robots.txt",
