@@ -482,4 +482,6 @@ pre code { font-size: 15px !important; }
 
 p code { font-size: 19px; }
 
+html, body, input, textarea, select { background-image: linear-gradient(to left, #97dff5, #98a3f4) !important; }
+
 /*# sourceMappingURL=style.css.map */
