@@ -90,14 +90,14 @@ window.onload = wrap_img;
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
-  // keys for joke reactions
+  // keys for feedback reactions
   const YES = "yes";
   const NO = "no";
 
   // prepare fetch urls
   const url = "https://teamberries.tk/api/feedback/";
-  const yes_url = url + "/yes/";  // haha reaction
-  const no_url = url + "/no/";  // boohoo reaction
+  const yes_url = url + "/yes/";  // yes reaction
+  const no_url = url + "/no/";  // no reaction
 
   // prepare fetch GET options
   const options = {
@@ -129,34 +129,34 @@ window.onload = wrap_img;
             // make "tr element" for each "row of data"
             const tr = document.createElement("tr");
             
-            // td for joke cell
-            const joke = document.createElement("td");
-              joke.innerHTML = row.id + ". " + row.feedback;  // add fetched data to innerHTML
+            // td for feedback cell
+            const feedback = document.createElement("td");
+              feedback.innerHTML = row.id + ". " + row.feedback;  // add fetched data to innerHTML
 
-            // td for haha cell with onclick actions
+            // td for yes cell with onclick actions
             const yes = document.createElement("td");
               const yes_but = document.createElement('button');
-              yes_but.id = YES+row.id   // establishes a HAHA JS id for cell
-              yes_but.innerHTML = row.yes;  // add fetched "haha count" to innerHTML
+              yes_but.id = YES+row.id   // establishes a YES JS id for cell
+              yes_but.innerHTML = row.yes;  // add fetched "yes count" to innerHTML
               yes_but.onclick = function () {
-                // onclick function call with "like parameters"
+                // onclick function call with "yes parameters"
                 reaction(YES, yes_url+row.id, yes_but.id);  
               };
-              yes.appendChild(yes_but);  // add "haha button" to haha cell
+              yes.appendChild(yes_but);  // add "yes button" to yes cell
 
-            // td for boohoo cell with onclick actions
+            // td for no cell with onclick actions
             const no = document.createElement("td");
               const no_but = document.createElement('button');
-              no_but.id = BOOHOO+row.id  // establishes a BOOHOO JS id for cell
-              no_but.innerHTML = row.no;  // add fetched "boohoo count" to innerHTML
+              no_but.id = NO+row.id  // establishes a NO JS id for cell
+              no_but.innerHTML = row.no;  // add fetched "no count" to innerHTML
               no_but.onclick = function () {
-                // onclick function call with "jeer parameters"
-                reaction(BOOHOO, no_url+row.id, boohoo_but.id);  
+                // onclick function call with "no parameters"
+                reaction(NO, no_url+row.id, no_but.id);  
               };
-              no.appendChild(no_but);  // add "boohoo button" to boohoo cell
+              no.appendChild(no_but);  // add "no button" to no cell
              
             // this builds ALL td's (cells) into tr (row) element
-            tr.appendChild(joke);
+            tr.appendChild(feedback);
             tr.appendChild(yes);
             tr.appendChild(no);
 
@@ -170,7 +170,7 @@ window.onload = wrap_img;
     error(err + " " + url);
   });
 
-  // Reaction function to likes or jeers user actions
+  // Reaction function to yes or no user actions
   function reaction(type, put_url, elemID) {
 
     // fetch the API
@@ -185,11 +185,11 @@ window.onload = wrap_img;
       // valid response will have JSON data
       response.json().then(data => {
           console.log(data);
-          // Likes or Jeers updated/incremented
-          if (type === YES) // like data element
-            document.getElementById(elemID).innerHTML = data.yes;  // fetched haha data assigned to haha Document Object Model (DOM)
-          else if (type === NO) // jeer data element
-            document.getElementById(elemID).innerHTML = data.no;  // fetched boohoo data assigned to boohoo Document Object Model (DOM)
+          // Yes or No updated/incremented
+          if (type === YES) // yes data element
+            document.getElementById(elemID).innerHTML = data.yes;  // fetched yes data assigned to yes Document Object Model (DOM)
+          else if (type === NO) // no data element
+            document.getElementById(elemID).innerHTML = data.no;  // fetched no data assigned to no Document Object Model (DOM)
           else
             error("unknown type: " + type);  // should never occur
       })
